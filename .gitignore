@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build directories
+build/
+dist/
+
+# Keep lib directory but ignore compiled binaries
+lib/**/*.node
+lib/**/*.js
+lib/**/*.d.ts
+!lib/index.ts
+
+# Editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db

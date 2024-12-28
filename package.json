@@ -1,0 +1,31 @@
+{
+    "name": "@galihrivanto/native-module",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "publishConfig": {
+      "access": "public"
+    },
+    "scripts": {
+      "install": "node-pre-gyp install --fallback-to-build",
+      "postinstall": "node scripts/copy-binary.js",
+      "build": "node-gyp rebuild && tsc",
+      "package": "node-pre-gyp package",
+      "test": "node test.js"
+    },
+    "binary": {
+      "module_name": "native_addon",
+      "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
+      "remote_path": "./releases/download/v{version}/",
+      "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
+      "host": "https://github.com/galihrivanto/native-module/releases/download/"
+    },
+    "dependencies": {
+      "@mapbox/node-pre-gyp": "^1.0.10",
+      "node-addon-api": "^6.1.0"
+    },
+    "devDependencies": {
+      "@types/node": "^18.0.0",
+      "typescript": "^4.9.0"
+    }
+  }
