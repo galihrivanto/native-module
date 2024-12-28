@@ -27,14 +27,18 @@ jobs:
       run: npm run build
 
     - name: Package binary
-      run: node-pre-gyp package
+      run: |
+        node-pre-gyp package
+        ls -la build/stage || true
+        find . -name "*.tar.gz" || true
 
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
-        files: build/stage/*
+        files: build/**/*.tar.gz
+        generate_release_notes: true
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
     - name: Publish to npm
       run: npm publish --access public
