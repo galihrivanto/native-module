@@ -10,8 +10,6 @@ dist/
 
 # Keep lib directory but ignore compiled binaries
 lib/**/*.node
-lib/**/*.js
-lib/**/*.d.ts
 !lib/index.ts
 
 # Editor specific files
